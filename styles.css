@@ -1,3 +1,19 @@
-.test-div {
-    background-color: lightblue;
+.question-flex {
+    
+}
+
+.question-div {
+    margin-bottom: 5px;
+}
+
+.question-textbox {
+    width: 500px;
+}
+
+.answer-div {
+
+}
+
+.answer-textbox {
+    width: 400px;
 }
