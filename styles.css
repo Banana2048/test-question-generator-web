@@ -1,8 +1,13 @@
-.question-flex {
-    
+
+.new-question-button-div {
+    margin-bottom: 5px;
 }
 
-.question-div {
+.input-div {
+    margin-bottom: 10px;
+}
+
+.question-entry-div {
     margin-bottom: 5px;
 }
 
@@ -10,8 +15,8 @@
     width: 500px;
 }
 
-.answer-div {
-
+.answer-entry-div {
+    margin-bottom: 3px;
 }
 
 .answer-textbox {

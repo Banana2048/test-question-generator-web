@@ -6,27 +6,29 @@
     </head>
     
     <body>
-        <div class = 'question-answer-div'>
-            <div class = 'question-div'>
-                <input class = 'question-textbox' type = "text" placeholder = "Enter question"/>
-            </div>
-        
-            <div class = 'answer-div'></div>
-                <input class = 'answer-textbox' type = "text" placeholder = "Enter answer"/>
-            </div>
+        <div class = 'new-question-button-div'>
+            <button
+                class = 'new-question-button js-new-question'
+                onclick = 'handleNewQuestion();'
+            > 
+            + 
+            </button>
+        </div>
 
-            <div class = 'answer-div'></div>
-                <input class = 'answer-textbox' type = "text" placeholder = "Enter answer"/>
-            </div>
+        <div class = 'questions-and-answers-div js-questions-and-answers'>
+            <div class = 'input-div js-input-div'>
+                <div class = 'question-entry-div'>
+                    <input class = 'question-textbox' type = "text" placeholder = "Enter question"/>
+                </div>
+            
+                <div class = 'answer-entry-div'>
+                    <input class = 'answer-textbox' type = "text" placeholder = "Enter answer"/>
+                </div>
 
-            <div class = 'answer-div'></div>
-                <input class = 'answer-textbox' type = "text" placeholder = "Enter answer"/>
+                <div class = 'answer-entry-div'>
+                    <input class = 'answer-textbox' type = "text" placeholder = "Enter answer"/>
+                </div>
             </div>
-
-            <div class = 'answer-div'></div>
-                <input class = 'answer-textbox' type = "text" placeholder = "Enter answer"/>
-            </div>
-
         </div>
         
         <script src = 'script.js'></script>
