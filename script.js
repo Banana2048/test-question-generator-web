@@ -16,18 +16,22 @@ function handleNewQuestion()
             </div>
             
             <div class = 'answer-entry-div'>
+                <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
                 <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
             </div>
 
             <div class = 'answer-entry-div'>
+                <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
                 <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
             </div>
 
             <div class = 'answer-entry-div'>
+                <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
                 <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
             </div>
 
             <div class = 'answer-entry-div'>
+                <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
                 <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
             </div>
         </div>
@@ -39,8 +43,10 @@ function handleNewQuestion()
 
 function doneButtonClick()
 {
+    test = [];
     const allQuestions = document.querySelectorAll('.js-question-textbox');
     const allAnswers = document.querySelectorAll('.js-answer-textbox');
+    const allCheckboxes = document.querySelectorAll('.js-correct-checkbox');
     let curAnswerIndex = 0;
 
     // add questions
@@ -48,7 +54,8 @@ function doneButtonClick()
     {
         let newQuestion = {
             'question': "",
-            'answers': []};
+            'answers': []
+        };
         
         newQuestion['question'] = allQuestions[i].value;
         
@@ -56,7 +63,11 @@ function doneButtonClick()
         let tempAnswerIndex = curAnswerIndex;
         for (let j = curAnswerIndex; j < tempAnswerIndex + 4 && curAnswerIndex < allAnswers.length; j++)
         {
-            newQuestion['answers'].push(allAnswers[j].value);
+            let isCorrectAnswer = false;
+            if (allCheckboxes[j].checked)
+                isCorrectAnswer = true;
+
+            newQuestion['answers'].push({'answer': allAnswers[j].value, 'isCorrect': isCorrectAnswer});
             curAnswerIndex++;
         }
 
