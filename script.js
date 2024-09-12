@@ -4,6 +4,22 @@ let questionNum = 2;
 
 function handleNewQuestion()
 {
+    // save previous answers
+    const allPrevQuestions = document.querySelectorAll('.js-question-textbox');
+    const allPrevAnswers = document.querySelectorAll('.js-answer-textbox');
+
+    let allSavedQuestions = [];
+    let allSavedAnswers = [];
+
+    for (let i = 0; i < allPrevQuestions.length; i++) {
+        allSavedQuestions.push(allPrevQuestions[i].value);
+    }
+
+    for (let i = 0; i < allPrevAnswers.length; i++) {
+        allSavedAnswers.push(allPrevAnswers[i].value);
+    }
+
+    // create new question & answer input section
     const newQuestionElement = document.querySelector('.js-questions-and-answers');
 
     const newQuestionHTML = `
@@ -39,6 +55,19 @@ function handleNewQuestion()
 
     questionNum += 1;
     newQuestionElement.innerHTML += newQuestionHTML;
+
+    const allQuestions = document.querySelectorAll('.js-question-textbox');
+    const allAnswers= document.querySelectorAll('.js-answer-textbox');
+
+
+    // fill out previously filled inputs
+    for (let i = 0; i < allPrevQuestions.length; i++) {
+        allQuestions[i].value = allSavedQuestions[i];
+    }
+
+    for (let i = 0; i < allPrevAnswers.length; i++) {
+        allAnswers[i].value = allSavedAnswers[i];
+    }
 }
 
 function doneButtonClick()
