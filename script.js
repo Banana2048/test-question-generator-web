@@ -25,7 +25,7 @@ function handleNewQuestion()
     const newQuestionHTML = `
         <div class = 'input-div js-input-div'>
             <div class = 'question-heading-div'>
-                    question ${questionNum}
+                    Question ${questionNum}
                 </div>
             <div class = 'question-entry-div'>
                 <input class = 'question-textbox js-question-textbox' type = "text" placeholder = "Enter question"/>
@@ -70,9 +70,10 @@ function handleNewQuestion()
     }
 }
 
-function doneButtonClick()
+function convertInputsToTestArray()
 {
-    test = [];
+    let test = [];
+
     const allQuestions = document.querySelectorAll('.js-question-textbox');
     const allAnswers = document.querySelectorAll('.js-answer-textbox');
     const allCheckboxes = document.querySelectorAll('.js-correct-checkbox');
@@ -103,5 +104,40 @@ function doneButtonClick()
         test.push(newQuestion);
     }
 
-    console.log(test);
+    return test;
+}
+
+function doneButtonClick()
+{
+    let test = convertInputsToTestArray();
+
+    generateTest(test);
+}
+
+function generateTest(test)
+{
+    let testIndicies = [];
+    let curNum = 0;
+
+    // create array of possible indicies
+    for (let i = 0; i < test.length; i++)
+    {
+        testIndicies.push(curNum);
+        curNum++;
+    }
+
+    for (let i = 0; i < test.length; i++)
+    {
+        let randIndex = Math.floor(Math.random() * testIndicies.length);
+        let curQuestionIndex = testIndicies[randIndex];
+        //console.log("rand index: " + randIndex);
+        //console.log("cur index: " + testIndicies[randIndex]);
+        //console.log("indicies array: " + testIndicies);
+        
+        let curQuestion = test.at(curQuestionIndex);
+        console.log(curQuestion);
+        testIndicies.splice(randIndex, 1); // remove index from possible indicies
+    }
+
+    //console.log(indicies);
 }
