@@ -137,7 +137,7 @@ function generateTest(test)
 {
     let testIndicies = createIndiciesList(test.length);
     const displayTestElement = document.querySelector('.js-printed-test-div');
-
+    displayTestElement.innerHTML = ``;
     displayTestHTML = ``;
 
     let questionNum = 1;
@@ -145,14 +145,27 @@ function generateTest(test)
     for (let i = 0; i < test.length; i++)
     {
         let curQuestion = test.at(pickRandom(testIndicies));
+
+        // create new question & answer div
+        displayTestElement.innerHTML += `
+            <div class = 'printed-question-and-answer'> </div>
+        `;
+
+        let curQuestionAndAnswerElement = (document.querySelectorAll('.printed-question-and-answer'))[i];
+
+        // add current question into the question & answer div
+        let displayQuestionHTML = `
+            <div class = 'printed-question'> ${questionNum}. ${curQuestion['question']} </div>
+        `;
+
+        curQuestionAndAnswerElement.innerHTML += displayQuestionHTML;
+
+        // add answer choices to the question & answer div
         let curAnswers = curQuestion['answers'];
         let answerIndicies = createIndiciesList(curAnswers.length);
         let answerOptions = ['A', 'B', 'C', 'D'];
 
-        //console.log(curQuestion);
-
-        displayTestHTML += `
-            <div class = 'printed-question'> ${questionNum}. ${curQuestion['question']} </div>
+        let displayAnswersHTML = `
         `;
 
         for (let i = 0; i < curAnswers.length; i++)
@@ -160,13 +173,13 @@ function generateTest(test)
             let curAnswerIndex = pickRandom(answerIndicies);
             let curAnswer = curAnswers.at(curAnswerIndex).answer;
 
-            displayTestHTML += `
+            displayAnswersHTML += `
                 <div class = 'printed-answer'> ${answerOptions.at(i)}. ${curAnswer} </div>
             `;
         }
 
+        curQuestionAndAnswerElement.innerHTML += displayAnswersHTML;
+
         questionNum++;
     }
-
-    displayTestElement.innerHTML = displayTestHTML;
 }

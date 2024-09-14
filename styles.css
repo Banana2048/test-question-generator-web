@@ -1,4 +1,11 @@
 
+p {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
 .new-question-button-div {
     margin-bottom: 5px;
 }
@@ -25,4 +32,13 @@
 
 .answer-textbox {
     width: 400px;
+}
+
+.printed-question-and-answer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.printed-answer {
+    margin-left: 5px;
 }
