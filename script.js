@@ -1,5 +1,3 @@
-let test = [];
-
 let questionNum = 2;
 
 function handleNewQuestion()
@@ -114,6 +112,16 @@ function doneButtonClick()
     generateTest(test);
 }
 
+function pickRandomQuestion(test, testIndicies)
+{
+    let randIndex = Math.floor(Math.random() * testIndicies.length);
+    let questionIndex = testIndicies[randIndex];
+    let question = test.at(questionIndex);
+    testIndicies.splice(randIndex, 1); // remove index from possible indicies
+
+    return question;
+}
+
 function generateTest(test)
 {
     let testIndicies = [];
@@ -128,16 +136,7 @@ function generateTest(test)
 
     for (let i = 0; i < test.length; i++)
     {
-        let randIndex = Math.floor(Math.random() * testIndicies.length);
-        let curQuestionIndex = testIndicies[randIndex];
-        //console.log("rand index: " + randIndex);
-        //console.log("cur index: " + testIndicies[randIndex]);
-        //console.log("indicies array: " + testIndicies);
-        
-        let curQuestion = test.at(curQuestionIndex);
+        let curQuestion = pickRandomQuestion(test, testIndicies);
         console.log(curQuestion);
-        testIndicies.splice(randIndex, 1); // remove index from possible indicies
     }
-
-    //console.log(indicies);
 }
