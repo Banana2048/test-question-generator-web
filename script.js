@@ -105,7 +105,7 @@ function convertInputsToTestArray()
     return test;
 }
 
-function doneButtonClick()
+function generateButtonClick()
 {
     let test = convertInputsToTestArray();
 
@@ -126,6 +126,9 @@ function generateTest(test)
 {
     let testIndicies = [];
     let curNum = 0;
+    const displayTestElement = document.querySelector('.js-printed-test-div');
+
+    displayTestHTML = ``;
 
     // create array of possible indicies
     for (let i = 0; i < test.length; i++)
@@ -134,9 +137,19 @@ function generateTest(test)
         curNum++;
     }
 
+    let questionNum = 1;
+
     for (let i = 0; i < test.length; i++)
     {
         let curQuestion = pickRandomQuestion(test, testIndicies);
         console.log(curQuestion);
+        displayTestHTML += `
+            <div class = 'printed-question'> ${questionNum}. ${curQuestion['question']} </div>
+        `;
+
+        questionNum++;
     }
+
+    displayTestElement.innerHTML = displayTestHTML;
+    
 }
