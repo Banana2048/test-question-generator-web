@@ -112,44 +112,61 @@ function generateButtonClick()
     generateTest(test);
 }
 
-function pickRandomQuestion(test, testIndicies)
+function pickRandom(possibleIndicies)
 {
-    let randIndex = Math.floor(Math.random() * testIndicies.length);
-    let questionIndex = testIndicies[randIndex];
-    let question = test.at(questionIndex);
-    testIndicies.splice(randIndex, 1); // remove index from possible indicies
+    let randIndex = Math.floor(Math.random() * possibleIndicies.length);
+    let listIndex = possibleIndicies[randIndex];
+    possibleIndicies.splice(randIndex, 1); // remove index from possible indicies
+    return listIndex;
+}
 
-    return question;
+function createIndiciesList(size)
+{
+    let indiciesList = [];
+    let curNum = 0;
+    for (let i = 0; i < size; i++)
+    {
+        indiciesList.push(curNum);
+        curNum++;
+    }
+
+    return indiciesList;
 }
 
 function generateTest(test)
 {
-    let testIndicies = [];
-    let curNum = 0;
+    let testIndicies = createIndiciesList(test.length);
     const displayTestElement = document.querySelector('.js-printed-test-div');
 
     displayTestHTML = ``;
-
-    // create array of possible indicies
-    for (let i = 0; i < test.length; i++)
-    {
-        testIndicies.push(curNum);
-        curNum++;
-    }
 
     let questionNum = 1;
 
     for (let i = 0; i < test.length; i++)
     {
-        let curQuestion = pickRandomQuestion(test, testIndicies);
-        console.log(curQuestion);
+        let curQuestion = test.at(pickRandom(testIndicies));
+        let curAnswers = curQuestion['answers'];
+        let answerIndicies = createIndiciesList(curAnswers.length);
+        let answerOptions = ['A', 'B', 'C', 'D'];
+
+        //console.log(curQuestion);
+
         displayTestHTML += `
             <div class = 'printed-question'> ${questionNum}. ${curQuestion['question']} </div>
         `;
+
+        for (let i = 0; i < curAnswers.length; i++)
+        {
+            let curAnswerIndex = pickRandom(answerIndicies);
+            let curAnswer = curAnswers.at(curAnswerIndex).answer;
+
+            displayTestHTML += `
+                <div class = 'printed-answer'> ${answerOptions.at(i)}. ${curAnswer} </div>
+            `;
+        }
 
         questionNum++;
     }
 
     displayTestElement.innerHTML = displayTestHTML;
-    
 }
