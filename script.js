@@ -1,4 +1,5 @@
 let questionNum = 2;
+let answerKey = [];
 
 function handleNewQuestion()
 {
@@ -71,6 +72,7 @@ function handleNewQuestion()
 function convertInputsToTestArray()
 {
     let test = [];
+    answerKey = [];
 
     const allQuestions = document.querySelectorAll('.js-question-textbox');
     const allAnswers = document.querySelectorAll('.js-answer-textbox');
@@ -171,15 +173,52 @@ function generateTest(test)
         for (let i = 0; i < curAnswers.length; i++)
         {
             let curAnswerIndex = pickRandom(answerIndicies);
-            let curAnswer = curAnswers.at(curAnswerIndex).answer;
+            //let curAnswer = curAnswers.at(curAnswerIndex).answer;
+            let curAnswer = curAnswers.at(curAnswerIndex);
+
+            if (curAnswer.isCorrect) {
+                answerKey.push(answerOptions.at(i));
+            }
 
             displayAnswersHTML += `
-                <div class = 'printed-answer'> ${answerOptions.at(i)}. ${curAnswer} </div>
+                <div class = 'printed-answer'> ${answerOptions.at(i)}. ${curAnswer.answer} </div>
             `;
         }
 
         curQuestionAndAnswerElement.innerHTML += displayAnswersHTML;
 
+        let answerKeyButtonElement = document.querySelector('.js-answer-key-button-div');
+
+        const answerKeyButtonHTML = `
+            <button onclick = 'generateAnswerKey();'>
+                Show Answer Key
+            </button>
+        `;
+
+        answerKeyButtonElement.innerHTML = answerKeyButtonHTML;
+
         questionNum++;
     }
+
+}
+
+function generateAnswerKey()
+{
+    console.log("generating answer key...");
+    console.log(answerKey);
+
+    const answerKeyElement = document.querySelector('.js-answer-key-div');
+
+    let answerKeyHTML = ``;
+
+    for (let i = 0; i < answerKey.length; i++)
+    {
+        answerKeyHTML += `
+            <div> 
+                ${i+1}. ${answerKey[i]}
+            </div>
+        `;
+    }
+
+    answerKeyElement.innerHTML = answerKeyHTML;
 }
