@@ -190,7 +190,7 @@ function generateTest(test)
         let answerKeyButtonElement = document.querySelector('.js-answer-key-button-div');
 
         const answerKeyButtonHTML = `
-            <button onclick = 'generateAnswerKey();'>
+            <button class = 'show-answer-key-button' onclick = 'generateAnswerKey();'>
                 Show Answer Key
             </button>
         `;

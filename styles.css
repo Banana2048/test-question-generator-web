@@ -10,7 +10,12 @@ p {
     margin-bottom: 5px;
 }
 
+.new-question-button {
+    font-family: Nunito, Arial;
+}
+
 .input-div {
+    font-family: Nunito, Arial;
     margin-bottom: 10px;
 }
 
@@ -24,6 +29,7 @@ p {
 
 .question-textbox {
     width: 500px;
+    font-family: Nunito, Arial;
 }
 
 .answer-entry-div {
@@ -31,18 +37,36 @@ p {
 }
 
 .answer-textbox {
+    font-family: Nunito, Arial;
     width: 400px;
 }
 
+.generate-button-div {
+    margin-bottom: 10px;
+}
+
+.generate-button {
+    font-family: Nunito, Arial;
+}
+
 .printed-test-div {
-    background-color: lightgray;
+    
 }
 
 .printed-question-and-answer {
+    font-family: Nunito, Arial;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
 .printed-answer {
     margin-left: 5px;
+}
+
+.show-answer-key-button {
+    font-family: Nunito, Arial;
+}
+
+.answer-key-div {
+    font-family: Nunito, Arial;
 }
