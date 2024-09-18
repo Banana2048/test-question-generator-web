@@ -9,40 +9,39 @@
     </head>
     
     <body>
+        <div class = 'title-input-div'>
+            <input class = 'title-textbox' type = 'text' placeholder = "Enter title"/>
+        </div>
         <div class = 'new-question-button-div'>
             <button
-                class = 'new-question-button js-new-question'
-                onclick = 'handleNewQuestion();'
-            > 
-            + 
-            </button>
+                class = 'new-question-button js-new-question' onclick = 'newQuestionButtonClick();'> + </button>
         </div>
 
         <div class = 'questions-and-answers-div js-questions-and-answers'>
-            <div class = 'input-div js-input-div'>
+            <div class = 'question-and-answers-input-div'>
                 <div class = 'question-heading-div'>
-                    Question 1
+                    <p> Question 1 </p>
                 </div>
-                <div class = 'question-entry-div'>
+                <div class = 'question-input-div'>
                     <input class = 'question-textbox js-question-textbox' type = "text" placeholder = "Enter question"/>
                 </div>
             
-                <div class = 'answer-entry-div'>
+                <div class = 'answer-input-div'>
                     <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
                     <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
                 </div>
 
-                <div class = 'answer-entry-div'>
+                <div class = 'answer-input-div'>
                     <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
                     <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
                 </div>
 
-                <div class = 'answer-entry-div'>
+                <div class = 'answer-input-div'>
                     <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
                     <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
                 </div>
 
-                <div class = 'answer-entry-div'>
+                <div class = 'answer-input-div'>
                     <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
                     <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
                 </div>
@@ -50,14 +49,8 @@
             </div>
         </div>
 
-        <div class = 'generate-button-div'>
-            <button
-                class = 'generate-button'
-                onclick = 'generateButtonClick();'
-            >
-                Generate Test
-            </button>
-
+        <div class = 'generate-test-button-div'>
+            <button class = 'generate-test-button' onclick = 'generateTestButtonClick();'> Generate Test </button>
         </div>
 
         <div class = 'printed-test-div js-printed-test-div'>

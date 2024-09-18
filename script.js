@@ -1,7 +1,7 @@
 let questionNum = 2;
 let answerKey = [];
 
-function handleNewQuestion()
+function newQuestionButtonClick()
 {
     // save previous answers
     const allPrevQuestions = document.querySelectorAll('.js-question-textbox');
@@ -22,30 +22,30 @@ function handleNewQuestion()
     const newQuestionElement = document.querySelector('.js-questions-and-answers');
 
     const newQuestionHTML = `
-        <div class = 'input-div js-input-div'>
+        <div class = 'question-and-answers-input-div'>
             <div class = 'question-heading-div'>
-                    Question ${questionNum}
+                    <p> Question ${questionNum} </p>
                 </div>
-            <div class = 'question-entry-div'>
+            <div class = 'question-input-div'>
                 <input class = 'question-textbox js-question-textbox' type = "text" placeholder = "Enter question"/>
             </div>
             
-            <div class = 'answer-entry-div'>
+            <div class = 'answer-input-div'>
                 <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
                 <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
             </div>
 
-            <div class = 'answer-entry-div'>
+            <div class = 'answer-input-div'>
                 <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
                 <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
             </div>
 
-            <div class = 'answer-entry-div'>
+            <div class = 'answer-input-div'>
                 <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
                 <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
             </div>
 
-            <div class = 'answer-entry-div'>
+            <div class = 'answer-input-div'>
                 <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
                 <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
             </div>
@@ -107,10 +107,9 @@ function convertInputsToTestArray()
     return test;
 }
 
-function generateButtonClick()
+function generateTestButtonClick()
 {
     let test = convertInputsToTestArray();
-
     generateTest(test);
 }
 
@@ -150,14 +149,14 @@ function generateTest(test)
 
         // create new question & answer div
         displayTestElement.innerHTML += `
-            <div class = 'printed-question-and-answer'> </div>
+            <div class = 'printed-question-and-answer-div'> </div>
         `;
 
-        let curQuestionAndAnswerElement = (document.querySelectorAll('.printed-question-and-answer'))[i];
+        let curQuestionAndAnswerElement = (document.querySelectorAll('.printed-question-and-answer-div'))[i];
 
         // add current question into the question & answer div
         let displayQuestionHTML = `
-            <div class = 'printed-question'> ${questionNum}. ${curQuestion['question']} </div>
+            <div class = 'printed-question-div'> <p> ${questionNum}. ${curQuestion['question']} </p> </div>
         `;
 
         curQuestionAndAnswerElement.innerHTML += displayQuestionHTML;
@@ -181,7 +180,7 @@ function generateTest(test)
             }
 
             displayAnswersHTML += `
-                <div class = 'printed-answer'> ${answerOptions.at(i)}. ${curAnswer.answer} </div>
+                <div class = 'printed-answer-div'> <p> ${answerOptions.at(i)}. ${curAnswer.answer} </p> </div>
             `;
         }
 
@@ -214,9 +213,7 @@ function generateAnswerKey()
     for (let i = 0; i < answerKey.length; i++)
     {
         answerKeyHTML += `
-            <div> 
-                ${i+1}. ${answerKey[i]}
-            </div>
+            <div> <p> ${i+1}. ${answerKey[i]} </p> </div>
         `;
     }
 

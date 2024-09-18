@@ -6,6 +6,16 @@ p {
     margin-bottom: 0px;
 }
 
+.title-input-div {
+    margin-bottom: 10px;
+}
+
+.title-textbox {
+    font-family: Nunito, Arial;
+    font-size: 15px;
+    width: 500px;
+}
+
 .new-question-button-div {
     margin-bottom: 5px;
 }
@@ -14,7 +24,7 @@ p {
     font-family: Nunito, Arial;
 }
 
-.input-div {
+.question-and-answers-input-div {
     font-family: Nunito, Arial;
     margin-bottom: 10px;
 }
@@ -23,7 +33,7 @@ p {
     margin-bottom: 2px;
 }
 
-.question-entry-div {
+.question-input-div {
     margin-bottom: 5px;
 }
 
@@ -32,7 +42,7 @@ p {
     font-family: Nunito, Arial;
 }
 
-.answer-entry-div {
+.answer-input-div {
     margin-bottom: 3px;
 }
 
@@ -41,11 +51,11 @@ p {
     width: 400px;
 }
 
-.generate-button-div {
+.generate-test-button-div {
     margin-bottom: 10px;
 }
 
-.generate-button {
+.generate-test-button {
     font-family: Nunito, Arial;
 }
 
@@ -53,7 +63,7 @@ p {
     
 }
 
-.printed-question-and-answer {
+.printed-question-and-answer-div {
     font-family: Nunito, Arial;
     margin-top: 10px;
     margin-bottom: 10px;
