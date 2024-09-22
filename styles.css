@@ -69,8 +69,12 @@ p {
     margin-bottom: 10px;
 }
 
-.printed-answer {
+.printed-answer-div {
     margin-left: 5px;
+}
+
+.back-to-input-button {
+    font-family: Nunito, Arial;
 }
 
 .show-answer-key-button {

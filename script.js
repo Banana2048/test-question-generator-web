@@ -1,4 +1,5 @@
 let questionNum = 2;
+let test = [];
 let answerKey = [];
 
 function newQuestionButtonClick()
@@ -71,7 +72,7 @@ function newQuestionButtonClick()
 
 function convertInputsToTestArray()
 {
-    let test = [];
+    test = [];
     answerKey = [];
 
     const allQuestions = document.querySelectorAll('.js-question-textbox');
@@ -104,13 +105,14 @@ function convertInputsToTestArray()
         test.push(newQuestion);
     }
 
-    return test;
+    //return test;
 }
 
 function generateTestButtonClick()
 {
     let test = convertInputsToTestArray();
-    generateTest(test);
+    //generateTest(test);
+    generateTest();
 }
 
 function pickRandom(possibleIndicies)
@@ -134,8 +136,27 @@ function createIndiciesList(size)
     return indiciesList;
 }
 
-function generateTest(test)
+function generateTest(/*test*/)
 {
+    const bodyElement = document.querySelector('body');
+    bodyElement.innerHTML = `
+        <div class = 'printed-test-div js-printed-test-div'>
+        
+        </div>
+
+        <div class = 'answer-key-button-div js-answer-key-button-div'>
+            <button class = 'back-to-input-button' onclick = 'backToInputsKey();'>
+                Back
+            </button>
+            <button class = 'show-answer-key-button' onclick = 'generateAnswerKey();'>
+                Show Answer Key
+            </button>
+        </div>
+
+        <div class = 'answer-key-div js-answer-key-div'>
+
+        </div>
+    `;
     let testIndicies = createIndiciesList(test.length);
     const displayTestElement = document.querySelector('.js-printed-test-div');
     displayTestElement.innerHTML = ``;
@@ -166,8 +187,7 @@ function generateTest(test)
         let answerIndicies = createIndiciesList(curAnswers.length);
         let answerOptions = ['A', 'B', 'C', 'D'];
 
-        let displayAnswersHTML = `
-        `;
+        let displayAnswersHTML = ``;
 
         for (let i = 0; i < curAnswers.length; i++)
         {
@@ -185,20 +205,59 @@ function generateTest(test)
         }
 
         curQuestionAndAnswerElement.innerHTML += displayAnswersHTML;
-
-        let answerKeyButtonElement = document.querySelector('.js-answer-key-button-div');
-
-        const answerKeyButtonHTML = `
-            <button class = 'show-answer-key-button' onclick = 'generateAnswerKey();'>
-                Show Answer Key
-            </button>
-        `;
-
-        answerKeyButtonElement.innerHTML = answerKeyButtonHTML;
-
         questionNum++;
     }
 
+}
+
+function backToInputsKey()
+{
+    const bodyElement = document.querySelector('body');
+    bodyElement.innerHTML = `
+        <div class = 'title-input-div'>
+            <input class = 'title-textbox js-title-textbox' type = 'text' placeholder = "Enter title"/>
+        </div>
+        <div class = 'new-question-button-div'>
+            <button
+                class = 'new-question-button js-new-question' onclick = 'newQuestionButtonClick();'> + </button>
+        </div>
+
+        <div class = 'questions-and-answers-div js-questions-and-answers'>
+            <div class = 'question-and-answers-input-div'>
+                <div class = 'question-heading-div'>
+                    <p> Question 1 </p>
+                </div>
+                <div class = 'question-input-div'>
+                    <input class = 'question-textbox js-question-textbox' type = "text" placeholder = "Enter question"/>
+                </div>
+            
+                <div class = 'answer-input-div'>
+                    <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
+                    <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
+                </div>
+
+                <div class = 'answer-input-div'>
+                    <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
+                    <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
+                </div>
+
+                <div class = 'answer-input-div'>
+                    <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
+                    <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
+                </div>
+
+                <div class = 'answer-input-div'>
+                    <input class = 'is-correct-checkbox js-correct-checkbox' type = "checkbox"/>
+                    <input class = 'answer-textbox js-answer-textbox' type = "text" placeholder = "Enter answer"/>
+                </div>
+
+            </div>
+        </div>
+
+        <div class = 'generate-test-button-div'>
+            <button class = 'generate-test-button' onclick = 'generateTestButtonClick();'> Generate Test </button>
+        </div>
+    `;
 }
 
 function generateAnswerKey()
