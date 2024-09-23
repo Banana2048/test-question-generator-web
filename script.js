@@ -212,6 +212,7 @@ function generateTest(/*test*/)
 
 function backToInputsKey()
 {
+    questionNum = 2;
     const bodyElement = document.querySelector('body');
     bodyElement.innerHTML = `
         <div class = 'title-input-div'>
