@@ -6,13 +6,18 @@ p {
     margin-bottom: 0px;
 }
 
+body {
+    background-color: rgb(146, 144, 195);
+}
+
 .title-input-div {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .title-textbox {
     font-family: Nunito, Arial;
     font-size: 15px;
+
     width: 500px;
 }
 
@@ -21,15 +26,35 @@ p {
 }
 
 .new-question-button {
+    background-color: rgb(76, 83, 124);
+
+    color: white;
     font-family: Nunito, Arial;
+    font-size: 20px;
+
+    border: none;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+}
+
+.new-question-button:hover {
+    background-color: rgb(76, 83, 124, 0.7);
+}
+
+.new-question-button:active {
+    background-color: rgb(76, 83, 124, 0.9);
 }
 
 .question-and-answers-input-div {
+    color: white;
     font-family: Nunito, Arial;
     margin-bottom: 10px;
 }
 
 .question-heading-div {
+    font-weight: bold;
+    font-size: 20px;
     margin-bottom: 2px;
 }
 
@@ -55,22 +80,48 @@ p {
     margin-bottom: 10px;
 }
 
-.generate-test-button {
-    font-family: Nunito, Arial;
-}
+.generate-test-button, .back-to-input-button, .show-answer-key-button {
+    background-color: rgb(76, 83, 124);
 
-.printed-test-div {
-    
-}
-
-.printed-question-and-answer-div {
+    color: white;
     font-family: Nunito, Arial;
-    margin-top: 10px;
+
+    border: none;
+    border-radius: 5px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
     margin-bottom: 10px;
 }
 
+.generate-test-button:hover, .back-to-input-button:hover, .show-answer-key-button:hover {
+    background-color: rgb(76, 83, 124, 0.7);
+}
+
+.generate-test-button:active, .back-to-input-button:active, .show-answer-key-button:active {
+    background-color: rgb(76, 83, 124, 0.9);
+}
+
+.printed-test-div, .answer-key-div {
+    background-color: white;
+
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    margin-bottom: 10px;
+}
+
+.printed-question-and-answer-div, .answer-key-div {
+    font-family: Nunito, Arial;
+    margin-bottom: 5px;
+}
+
 .printed-answer-div {
-    margin-left: 5px;
+    margin-left: 15px;
 }
 
 .back-to-input-button {
