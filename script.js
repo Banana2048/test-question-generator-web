@@ -1,4 +1,5 @@
 let questionNum = 2;
+let title = "";
 let test = [];
 let answerKey = [];
 
@@ -138,6 +139,9 @@ function createIndiciesList(size)
 
 function generateTest(/*test*/)
 {
+    const titleElement = document.querySelector('.js-title-textbox');
+    console.log(titleElement.value);
+
     const bodyElement = document.querySelector('body');
     bodyElement.innerHTML = `
         <div class = 'printed-test-div js-printed-test-div'>
@@ -161,6 +165,10 @@ function generateTest(/*test*/)
     const displayTestElement = document.querySelector('.js-printed-test-div');
     displayTestElement.innerHTML = ``;
     displayTestHTML = ``;
+
+    displayTestElement.innerHTML = `
+        <div class = 'printed-title-div'> <p> ${titleElement.value} </p> </div>
+    `;
 
     let questionNum = 1;
 
