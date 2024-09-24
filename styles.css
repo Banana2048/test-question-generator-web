@@ -141,3 +141,8 @@ body {
 .answer-key-div {
     font-family: Nunito, Arial;
 }
+
+.answer-key-title-div {
+    font-weight: bold;
+    font-size: 15px;
+}

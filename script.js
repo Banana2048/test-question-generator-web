@@ -156,10 +156,6 @@ function generateTest(/*test*/)
                 Show Answer Key
             </button>
         </div>
-
-        <div class = 'answer-key-div js-answer-key-div'>
-
-        </div>
     `;
     let testIndicies = createIndiciesList(test.length);
     const displayTestElement = document.querySelector('.js-printed-test-div');
@@ -273,10 +269,16 @@ function generateAnswerKey()
 {
     console.log("generating answer key...");
     console.log(answerKey);
+    const bodyElement = document.querySelector('body');
+    bodyElement.innerHTML += `
+        <div class = 'answer-key-div js-answer-key-div'> </div>
+    `;
 
     const answerKeyElement = document.querySelector('.js-answer-key-div');
 
-    let answerKeyHTML = ``;
+    let answerKeyHTML = `
+        <div class = 'answer-key-title-div'> <p> Answer Key </p> </div>
+    `;
 
     for (let i = 0; i < answerKey.length; i++)
     {
