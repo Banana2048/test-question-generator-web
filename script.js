@@ -105,14 +105,11 @@ function convertInputsToTestArray()
 
         test.push(newQuestion);
     }
-
-    //return test;
 }
 
 function generateTestButtonClick()
 {
     let test = convertInputsToTestArray();
-    //generateTest(test);
     generateTest();
 }
 
@@ -137,10 +134,9 @@ function createIndiciesList(size)
     return indiciesList;
 }
 
-function generateTest(/*test*/)
+function generateTest()
 {
     const titleElement = document.querySelector('.js-title-textbox');
-    console.log(titleElement.value);
 
     const bodyElement = document.querySelector('body');
     bodyElement.innerHTML = `
