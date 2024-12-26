@@ -208,6 +208,16 @@ function generateTest()
         questionNum++;
     }
 
+    // store generated test into local storage
+    let completeTest = {};
+
+    completeTest['title'] = titleElement.value;
+    completeTest['test'] = test;
+
+    const itemName = (titleElement.value).split(' ').join('_');
+    console.log(itemName);
+
+    localStorage.setItem(itemName, JSON.stringify(completeTest));
 }
 
 function backToInputsKey()
