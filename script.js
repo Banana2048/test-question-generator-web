@@ -1,7 +1,9 @@
 let questionNum = 2;
-let title = "";
-let test = [];
-let answerKey = [];
+let testInfo = {
+    title: "",
+    test: [],
+    answerKey: []
+};
 
 function newQuestionButtonClick()
 {
@@ -73,8 +75,12 @@ function newQuestionButtonClick()
 
 function convertInputsToTestArray()
 {
-    test = [];
-    answerKey = [];
+    // reset test data
+    testInfo['test'] = [];
+
+    // add title
+    const titleElement = document.querySelector('.js-title-textbox');
+    testInfo['title'] = titleElement.value;
 
     const allQuestions = document.querySelectorAll('.js-question-textbox');
     const allAnswers = document.querySelectorAll('.js-answer-textbox');
@@ -96,20 +102,21 @@ function convertInputsToTestArray()
         for (let j = curAnswerIndex; j < tempAnswerIndex + 4 && curAnswerIndex < allAnswers.length; j++)
         {
             let isCorrectAnswer = false;
-            if (allCheckboxes[j].checked)
+            if (allCheckboxes[j].checked) {
                 isCorrectAnswer = true;
+            }
 
             newQuestion['answers'].push({'answer': allAnswers[j].value, 'isCorrect': isCorrectAnswer});
             curAnswerIndex++;
         }
 
-        test.push(newQuestion);
+        testInfo['test'].push(newQuestion);
     }
 }
 
 function generateTestButtonClick()
 {
-    let test = convertInputsToTestArray();
+    convertInputsToTestArray();
     generateTest();
 }
 
@@ -153,7 +160,8 @@ function generateTest()
             </button>
         </div>
     `;
-    let testIndicies = createIndiciesList(test.length);
+
+    let testIndicies = createIndiciesList(testInfo['test'].length);
     const displayTestElement = document.querySelector('.js-printed-test-div');
     displayTestElement.innerHTML = ``;
     displayTestHTML = ``;
@@ -162,11 +170,11 @@ function generateTest()
         <div class = 'printed-title-div'> <p> ${titleElement.value} </p> </div>
     `;
 
-    let questionNum = 1;
+    let curQuestionNum = 1;
 
-    for (let i = 0; i < test.length; i++)
+    for (let i = 0; i < testInfo['test'].length; i++)
     {
-        let curQuestion = test.at(pickRandom(testIndicies));
+        let curQuestion = testInfo['test'].at(pickRandom(testIndicies));
 
         // create new question & answer div
         displayTestElement.innerHTML += `
@@ -177,7 +185,7 @@ function generateTest()
 
         // add current question into the question & answer div
         let displayQuestionHTML = `
-            <div class = 'printed-question-div'> <p> ${questionNum}. ${curQuestion['question']} </p> </div>
+            <div class = 'printed-question-div'> <p> ${curQuestionNum}. ${curQuestion['question']} </p> </div>
         `;
 
         curQuestionAndAnswerElement.innerHTML += displayQuestionHTML;
@@ -196,7 +204,7 @@ function generateTest()
             let curAnswer = curAnswers.at(curAnswerIndex);
 
             if (curAnswer.isCorrect) {
-                answerKey.push(answerOptions.at(i));
+                testInfo['answerKey'].push(answerOptions.at(i));
             }
 
             displayAnswersHTML += `
@@ -205,24 +213,17 @@ function generateTest()
         }
 
         curQuestionAndAnswerElement.innerHTML += displayAnswersHTML;
-        questionNum++;
+        curQuestionNum++;
     }
 
     // store generated test into local storage
-    let completeTest = {};
-
-    completeTest['title'] = titleElement.value;
-    completeTest['test'] = test;
-
-    const itemName = (titleElement.value).split(' ').join('_');
-    console.log(itemName);
-
-    localStorage.setItem(itemName, JSON.stringify(completeTest));
+    const itemName = (testInfo['title']).split(' ').join('_');
+    localStorage.setItem(itemName, JSON.stringify(testInfo));
 }
 
 function backToInputsKey()
 {
-    questionNum = 2;
+    questionNum = 2; // reset questionNum
     const bodyElement = document.querySelector('body');
     bodyElement.innerHTML = `
         <div class = 'title-input-div'>
@@ -274,7 +275,6 @@ function backToInputsKey()
 function generateAnswerKey()
 {
     console.log("generating answer key...");
-    console.log(answerKey);
     const bodyElement = document.querySelector('body');
     bodyElement.innerHTML += `
         <div class = 'answer-key-div js-answer-key-div'> </div>
@@ -286,10 +286,10 @@ function generateAnswerKey()
         <div class = 'answer-key-title-div'> <p> Answer Key </p> </div>
     `;
 
-    for (let i = 0; i < answerKey.length; i++)
+    for (let i = 0; i < testInfo['answerKey'].length; i++)
     {
         answerKeyHTML += `
-            <div> <p> ${i+1}. ${answerKey[i]} </p> </div>
+            <div> <p> ${i+1}. ${testInfo['answerKey'][i]} </p> </div>
         `;
     }
 
