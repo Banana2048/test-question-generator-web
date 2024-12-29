@@ -5,22 +5,53 @@ let testInfo = {
     answerKey: []
 };
 
-function newQuestionButtonClick()
+function saveQuestions()
 {
-    // save previous answers
     const allPrevQuestions = document.querySelectorAll('.js-question-textbox');
-    const allPrevAnswers = document.querySelectorAll('.js-answer-textbox');
-
     let allSavedQuestions = [];
-    let allSavedAnswers = [];
 
     for (let i = 0; i < allPrevQuestions.length; i++) {
         allSavedQuestions.push(allPrevQuestions[i].value);
     }
 
+    return allSavedQuestions;
+}
+
+function saveAnswers()
+{
+    const allPrevAnswers = document.querySelectorAll('.js-answer-textbox');
+    let allSavedAnswers = [];
+
     for (let i = 0; i < allPrevAnswers.length; i++) {
         allSavedAnswers.push(allPrevAnswers[i].value);
     }
+
+    return allSavedAnswers;
+}
+
+function fillQuestionInputs(questions)
+{
+    const allQuestionInputs = document.querySelectorAll('.js-question-textbox');
+
+    for (let i = 0; i < questions.length; i++) {
+        allQuestionInputs[i].value = questions[i];
+    }
+}
+
+function fillAnswerInputs(answers)
+{
+    const allAnswerInputs = document.querySelectorAll('.js-answer-textbox');
+
+    for (let i = 0; i < answers.length; i++) {
+        allAnswerInputs[i].value = answers[i];
+    }
+}
+
+function newQuestionButtonClick()
+{
+    // save previous answers
+    let allSavedQuestions = saveQuestions();
+    let allSavedAnswers = saveAnswers();
 
     // create new question & answer input section
     const newQuestionElement = document.querySelector('.js-questions-and-answers');
@@ -59,18 +90,9 @@ function newQuestionButtonClick()
     questionNum += 1;
     newQuestionElement.innerHTML += newQuestionHTML;
 
-    const allQuestions = document.querySelectorAll('.js-question-textbox');
-    const allAnswers= document.querySelectorAll('.js-answer-textbox');
-
-
     // fill out previously filled inputs
-    for (let i = 0; i < allPrevQuestions.length; i++) {
-        allQuestions[i].value = allSavedQuestions[i];
-    }
-
-    for (let i = 0; i < allPrevAnswers.length; i++) {
-        allAnswers[i].value = allSavedAnswers[i];
-    }
+    fillQuestionInputs(allSavedQuestions);
+    fillAnswerInputs(allSavedAnswers);
 }
 
 function convertInputsToTestArray()
